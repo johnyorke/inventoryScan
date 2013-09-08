@@ -1,7 +1,7 @@
 inventoryScan
 =============
 
-A barcode reading application for small businesses to take inventory.
+A barcode reading application for small businesses to take inventory. Only runs on iOS 7.
 
 # Imports
 You can use the iTunes file transfer feature or open attachments in Mail.app to import you current product database. File format has to be .txt. inventoryScan currently only supports the following format for imports:
