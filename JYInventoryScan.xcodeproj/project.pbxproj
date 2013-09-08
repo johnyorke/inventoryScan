@@ -73,7 +73,7 @@
 /* Begin PBXFileReference section */
 		CA41400017DC948A00B5A5E2 /* inventoryIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inventoryIcon@2x.png"; sourceTree = "<group>"; };
 		CA41400117DC948A00B5A5E2 /* inventoryIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inventoryIcon.png; sourceTree = "<group>"; };
-		CA9FB93117D9A129001A753A /* JYInventoryScan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JYInventoryScan.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA9FB93117D9A129001A753A /* Scanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA9FB93417D9A129001A753A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CA9FB93617D9A129001A753A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		CA9FB93817D9A129001A753A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -179,7 +179,7 @@
 		CA9FB93217D9A129001A753A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CA9FB93117D9A129001A753A /* JYInventoryScan.app */,
+				CA9FB93117D9A129001A753A /* Scanner.app */,
 				CA9FB95217D9A129001A753A /* JYInventoryScanTests.xctest */,
 			);
 			name = Products;
@@ -317,7 +317,7 @@
 			);
 			name = JYInventoryScan;
 			productName = JYInventoryScan;
-			productReference = CA9FB93117D9A129001A753A /* JYInventoryScan.app */;
+			productReference = CA9FB93117D9A129001A753A /* Scanner.app */;
 			productType = "com.apple.product-type.application";
 		};
 		CA9FB95117D9A129001A753A /* JYInventoryScanTests */ = {
@@ -556,7 +556,7 @@
 				GCC_PREFIX_HEADER = "JYInventoryScan/JYInventoryScan-Prefix.pch";
 				INFOPLIST_FILE = "JYInventoryScan/JYInventoryScan-Info.plist";
 				LIBRARY_SEARCH_PATHS = /Users/yorkej/Documents/Git/inventoryScan/JYInventoryScan;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Scanner;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -573,7 +573,7 @@
 				GCC_PREFIX_HEADER = "JYInventoryScan/JYInventoryScan-Prefix.pch";
 				INFOPLIST_FILE = "JYInventoryScan/JYInventoryScan-Info.plist";
 				LIBRARY_SEARCH_PATHS = /Users/yorkej/Documents/Git/inventoryScan/JYInventoryScan;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Scanner;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};

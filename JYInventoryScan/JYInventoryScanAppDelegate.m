@@ -38,6 +38,7 @@
     indataNew = [launchOptions valueForKey:UIApplicationLaunchOptionsURLKey];
     
     [navController.navigationBar setTranslucent:NO];
+    [navController.navigationBar setTintColor:[UIColor blueColor]];
 
     self.window.backgroundColor = [UIColor blackColor];
     [self.window makeKeyAndVisible];            
