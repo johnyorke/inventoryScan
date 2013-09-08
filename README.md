@@ -1,4 +1,4 @@
 inventoryScan
 =============
 
-A simple application for iPhone to take inventory.
+A barcode reading application for small businesses to take inventory.
