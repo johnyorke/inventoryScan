@@ -20,7 +20,7 @@ Quantity Scanned | Unique Product ID
 
 
 # About
-This was a hobby for me, if you'd like to improve it and take it on, please go ahead. All I ask is that you let me know purely for vanity sake.
+This was a hobby for me, if you'd like to improve it and take it on, please go ahead. All I ask is that you let me know purely for vanity sake. Email me at hello@johnyorke.me or follow me on Twitter @johnyorke.
 
 Have fun!
 
