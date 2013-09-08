@@ -4,13 +4,9 @@ inventoryScan
 A barcode reading application for small businesses to take inventory.
 
 // Imports
-You can use the iTunes file transfer feature or open attachments in Mail.app to import you current product database. 
-
-inventoryScan currently only supports the following format for imports:
+You can use the iTunes file transfer feature or open attachments in Mail.app to import you current product database. File format has to be .txt. inventoryScan currently only supports the following format for imports:
 
 Unique Product ID 1 | Unique Product ID 2 | Product Description | Price | Quantity on hand
-
-File format has to be .txt
 
 
 // Scanning
