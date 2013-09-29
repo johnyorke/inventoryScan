@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CA9FB93017D9A129001A753A"
-               BuildableName = "JYInventoryScan.app"
+               BuildableName = "Scanner.app"
                BlueprintName = "JYInventoryScan"
                ReferencedContainer = "container:JYInventoryScan.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CA9FB93017D9A129001A753A"
-            BuildableName = "JYInventoryScan.app"
+            BuildableName = "Scanner.app"
             BlueprintName = "JYInventoryScan"
             ReferencedContainer = "container:JYInventoryScan.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CA9FB93017D9A129001A753A"
-            BuildableName = "JYInventoryScan.app"
+            BuildableName = "Scanner.app"
             BlueprintName = "JYInventoryScan"
             ReferencedContainer = "container:JYInventoryScan.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CA9FB93017D9A129001A753A"
-            BuildableName = "JYInventoryScan.app"
+            BuildableName = "Scanner.app"
             BlueprintName = "JYInventoryScan"
             ReferencedContainer = "container:JYInventoryScan.xcodeproj">
          </BuildableReference>
