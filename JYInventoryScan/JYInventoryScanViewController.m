@@ -25,7 +25,7 @@
     [[UINavigationBar appearance] setTitleTextAttributes:
      [NSDictionary dictionaryWithObjectsAndKeys:
       [UIColor colorWithRed:0.0 green:0.47 blue:1 alpha:1.0],UITextAttributeTextColor,
-      [UIFont fontWithName:@"AvenirNext-Regular" size:18.0], UITextAttributeFont,nil]];
+      [UIFont fontWithName:@"GillSans-Light" size:18.0], UITextAttributeFont,nil]];
     
     self.navigationItem.title = @"Smythson";
     
