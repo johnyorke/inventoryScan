@@ -166,6 +166,53 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CA52A41F1800699100AC0464 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CA9FB97817D9A158001A753A /* JYInventoryScanItemsViewController.h */,
+				CA9FB97917D9A158001A753A /* JYInventoryScanItemsViewController.m */,
+				CA9FB97A17D9A158001A753A /* JYInventoryScanItemsViewController.xib */,
+				CA9FB96B17D9A158001A753A /* JYInventoryScanViewController.h */,
+				CA9FB96C17D9A158001A753A /* JYInventoryScanViewController.m */,
+				CA9FB96D17D9A158001A753A /* JYInventoryScanViewController.xib */,
+				CA9FB96E17D9A158001A753A /* JYInventoryScanScannerViewController.h */,
+				CA9FB96F17D9A158001A753A /* JYInventoryScanScannerViewController.m */,
+				CA9FB97017D9A158001A753A /* JYInventoryScanScannerViewController.xib */,
+				CA9FB97117D9A158001A753A /* JYInventoryScanInfoPaneViewController.h */,
+				CA9FB97217D9A158001A753A /* JYInventoryScanInfoPaneViewController.m */,
+				CA9FB97317D9A158001A753A /* JYInventoryScanInfoPaneViewController.xib */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		CA52A420180069B700AC0464 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CA9FB97417D9A158001A753A /* JYInventoryScanItem.h */,
+				CA9FB97517D9A158001A753A /* JYInventoryScanItem.m */,
+				CA9FB97617D9A158001A753A /* JYInventoryScanItemStore.h */,
+				CA9FB97717D9A158001A753A /* JYInventoryScanItemStore.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		CA52A421180069C700AC0464 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CA9FB98B17D9A17E001A753A /* AppleLabel */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		CA52A422180069EA00AC0464 /* External Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CA9FB99017D9A1C4001A753A /* CHCSVParser */,
+				CA9FB98C17D9A18F001A753A /* DTDevices.h */,
+			);
+			name = "External Frameworks";
+			sourceTree = "<group>";
+		};
 		CA9FB92817D9A129001A753A = {
 			isa = PBXGroup;
 			children = (
@@ -206,26 +253,11 @@
 			children = (
 				CA9FB96917D9A158001A753A /* JYInventoryScanAppDelegate.h */,
 				CA9FB96A17D9A158001A753A /* JYInventoryScanAppDelegate.m */,
-				CA9FB96B17D9A158001A753A /* JYInventoryScanViewController.h */,
-				CA9FB96C17D9A158001A753A /* JYInventoryScanViewController.m */,
-				CA9FB96D17D9A158001A753A /* JYInventoryScanViewController.xib */,
-				CA9FB96E17D9A158001A753A /* JYInventoryScanScannerViewController.h */,
-				CA9FB96F17D9A158001A753A /* JYInventoryScanScannerViewController.m */,
-				CA9FB97017D9A158001A753A /* JYInventoryScanScannerViewController.xib */,
-				CA9FB97117D9A158001A753A /* JYInventoryScanInfoPaneViewController.h */,
-				CA9FB97217D9A158001A753A /* JYInventoryScanInfoPaneViewController.m */,
-				CA9FB97317D9A158001A753A /* JYInventoryScanInfoPaneViewController.xib */,
-				CA9FB97417D9A158001A753A /* JYInventoryScanItem.h */,
-				CA9FB97517D9A158001A753A /* JYInventoryScanItem.m */,
-				CA9FB97617D9A158001A753A /* JYInventoryScanItemStore.h */,
-				CA9FB97717D9A158001A753A /* JYInventoryScanItemStore.m */,
-				CA9FB97817D9A158001A753A /* JYInventoryScanItemsViewController.h */,
-				CA9FB97917D9A158001A753A /* JYInventoryScanItemsViewController.m */,
-				CA9FB97A17D9A158001A753A /* JYInventoryScanItemsViewController.xib */,
+				CA52A420180069B700AC0464 /* Model */,
+				CA52A421180069C700AC0464 /* View */,
+				CA52A41F1800699100AC0464 /* Controller */,
 				CA9FB94C17D9A129001A753A /* Images.xcassets */,
-				CA9FB98B17D9A17E001A753A /* AppleLabel */,
-				CA9FB99017D9A1C4001A753A /* CHCSVParser */,
-				CA9FB98C17D9A18F001A753A /* DTDevices.h */,
+				CA52A422180069EA00AC0464 /* External Frameworks */,
 				CA9FB93B17D9A129001A753A /* Supporting Files */,
 			);
 			path = JYInventoryScan;
