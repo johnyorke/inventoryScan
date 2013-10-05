@@ -4,13 +4,13 @@ inventoryScan
 A barcode reading application for small businesses to take inventory. Load in your current database from your EPOS system, scan what you've got, then send back the scanned items to your system.
 
 # Import
-You can use iTunes file transfer or open .txt attachments in Mail.app to import your product database. inventoryScan only supports .txt import currently in the following format" 
+You can use iTunes file transfer or open .txt attachments in Mail.app to import your product database. inventoryScan currently only supports .txt import in the following format: 
 
 Unique Product ID 1 | Unique Product ID 2 | Product Description | Price | Quantity on hand
 
 
 # Scanning
-Built in support for Infinite Peripherals line of Linea scanners. If Linea scanner isn't present you can type the unique product IDs in via the iOS keyboard.
+Built in support for Infinite Peripherals line of Linea scanners. If a Linea scanner isn't present you can use the iOS keyboard for input.
 
 
 # Export
