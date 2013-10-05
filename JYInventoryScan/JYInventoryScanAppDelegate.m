@@ -34,8 +34,8 @@
     
     navController.navigationBar.tintColor = [UIColor blackColor];
         
-    // Load incoming indata url from mail.app into a string
-    indataNew = [launchOptions valueForKey:UIApplicationLaunchOptionsURLKey];
+    // Load incoming inputData url from mail.app into a string
+    inputDataNew = [launchOptions valueForKey:UIApplicationLaunchOptionsURLKey];
     
     [navController.navigationBar setTranslucent:NO];
     [navController.navigationBar setTintColor:[UIColor blueColor]];
@@ -47,7 +47,7 @@
 
 - (BOOL) application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {    
-    // Overwrite existing indata with incoming and update main menu tick/cross
+    // Overwrite existing inputData with incoming and update main menu tick/cross
     NSFileManager *fm = [[NSFileManager alloc] init];
     
     NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, 
@@ -56,24 +56,24 @@
     
     NSString *documentDirectory = [documentDirectories objectAtIndex:0];
     
-    NSURL *oldFile = [NSURL URLWithString:[documentDirectory stringByAppendingPathComponent:@"indata.txt"]];
+    NSURL *oldFile = [NSURL URLWithString:[documentDirectory stringByAppendingPathComponent:@"inputData.txt"]];
     
     [fm replaceItemAtURL:oldFile withItemAtURL:url backupItemName:nil options:0 resultingItemURL:nil error:nil];
     
     
-    // Create the url to the indata file and update it in the indataString
+    // Create the url to the inputData file and update it in the inputDataString
     NSError * error;
     NSString * stringFromFile;
     NSArray *docDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *docDirectory = [docDirectories objectAtIndex:0];
-    NSString * stringFilepath = [docDirectory stringByAppendingPathComponent:@"indata.txt"];
+    NSString * stringFilepath = [docDirectory stringByAppendingPathComponent:@"inputData.txt"];
     
     // Create a string from the contents
     stringFromFile = [[NSString alloc] initWithContentsOfFile:stringFilepath
                                                      encoding:NSUTF8StringEncoding
                                                         error:&error];
     
-    [JYInventoryScanItemStore sharedStore].inDataString = stringFromFile;
+    [JYInventoryScanItemStore sharedStore].inputDataString = stringFromFile;
     
     return YES;
 }
@@ -89,7 +89,7 @@
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     
-    BOOL success = [[JYInventoryScanItemStore sharedStore] saveOutData];
+    BOOL success = [[JYInventoryScanItemStore sharedStore] saveOutputData];
     if (success) {
         NSLog(@"Saved all of the items");
     } else {
@@ -111,7 +111,7 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    BOOL success = [[JYInventoryScanItemStore sharedStore] saveOutData];
+    BOOL success = [[JYInventoryScanItemStore sharedStore] saveOutputData];
     if (success) {
         NSLog(@"Saved all of the items");
     } else {

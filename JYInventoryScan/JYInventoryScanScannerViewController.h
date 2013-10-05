@@ -42,14 +42,14 @@
       andItemQuantityOnHand: (NSString *) quantityOnHand 
                    andPrice: (NSString *) price;
 
-// On successful match in indata
+// On successful match in inputData
 - (void) playGoodBeepAtVolume: (NSInteger) volume;
 
-// On unscuccessful match in indata
+// On unscuccessful match in inputData
 - (void) playBadBeepAtVolume: (NSInteger) volume;
 
-// Looks in indata for string in enteredSkuField
-- (void) searchInIndata: (NSString *) searchData;
+// Looks in inputData for string in enteredSkuField
+- (void) searchInInputData: (NSString *) searchData;
 
 // Updates label when connected and on textFieldShouldReturn
 - (void) updateScannerBattery;
@@ -57,8 +57,8 @@
 // Adds ItemsViewController to stack
 - (void) tapLabel: (UITapGestureRecognizer *) gr;
 
-// Takes indata.txt and loads into one big string
+// Takes inputData.txt and loads into one big string
 // Called whenever view loads or appears
-- (void) loadInDataIntoString;
+- (void) loadInputDataIntoString;
 
 @end

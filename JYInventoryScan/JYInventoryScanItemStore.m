@@ -11,24 +11,24 @@
 
 @implementation JYInventoryScanItemStore
 
-@synthesize inData, outData;
-@synthesize inDataString;
+@synthesize inputData, outputData;
+@synthesize inputDataString;
 
 -(id) init
 {
     self = [super init];
     if (self) {
-        inData = [[NSMutableArray alloc] init];
-        // outData = [[NSMutableArray alloc] init];
+        inputData = [[NSMutableArray alloc] init];
+        // outputData = [[NSMutableArray alloc] init];
         
         NSString *path = [self itemArchivePath];
-        outData = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+        outputData = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
                 
-        if (!outData) {
-            outData = [[NSMutableArray alloc] init];
+        if (!outputData) {
+            outputData = [[NSMutableArray alloc] init];
         }
         
-        inDataString = [[NSString alloc] init];
+        inputDataString = [[NSString alloc] init];
     }
     
     return self;
@@ -68,11 +68,11 @@
     return [documentDirectory stringByAppendingPathComponent:@"items.archive"];
 }
 
-- (BOOL) saveOutData
+- (BOOL) saveOutputData
 {
     NSString *path = [self itemArchivePath];
     
-    return [NSKeyedArchiver archiveRootObject:outData toFile:path];
+    return [NSKeyedArchiver archiveRootObject:outputData toFile:path];
 }
 
 - (NSUInteger) numberOfUnits
@@ -81,7 +81,7 @@
     NSUInteger totalNumberOfUnits = 0;
     
     // QTYs stored as strings so have to convert to int values first using integerValue method
-    for (JYInventoryScanItem *item in outData) {
+    for (JYInventoryScanItem *item in outputData) {
         totalNumberOfUnits = [item.itemQuantityOnHand integerValue] + totalNumberOfUnits;
     }
     

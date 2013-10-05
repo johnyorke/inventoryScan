@@ -37,19 +37,19 @@
 
 -(void) tap: (UITapGestureRecognizer *) gr; // Used on icon to cycle through versionLabel
 
--(void) tickTap: (UITapGestureRecognizer *) gr; // Used to refresh indata check
+-(void) tickTap: (UITapGestureRecognizer *) gr; // Used to refresh inputData check
 
--(void) crossTap: (UITapGestureRecognizer *) gr; // Used to refresh indata check
+-(void) crossTap: (UITapGestureRecognizer *) gr; // Used to refresh inputData check
 
--(BOOL) isInDataAvailable;
+-(BOOL) isInputDataAvailable;
 
 -(void) animateDataCheck;
 
 - (IBAction)enterScanMode:(id)sender;
 
-- (IBAction)exportOutData:(id)sender;
+- (IBAction)exportOutputData:(id)sender;
 
-- (IBAction)deleteOutData:(id)sender;
+- (IBAction)deleteOutputData:(id)sender;
 
 - (NSString *) documentFilePath;
 
@@ -57,8 +57,8 @@
 
 - (IBAction)showInfoPane:(id)sender;
 
-- (void) showNoIndataMessage;
+- (void) showNoInputDataMessage;
 
-- (void) noOutdataFoundMessage;
+- (void) noOutputDataFoundMessage;
 
 @end

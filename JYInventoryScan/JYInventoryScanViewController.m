@@ -75,7 +75,7 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-    [[JYInventoryScanItemStore sharedStore] saveOutData];
+    [[JYInventoryScanItemStore sharedStore] saveOutputData];
 
 }
 
@@ -152,16 +152,16 @@
     }
 }
 
-- (BOOL) isInDataAvailable
+- (BOOL) isInputDataAvailable
 {
     NSArray *documentDirectories = 
     NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     
     NSString *documentDirectory = [documentDirectories objectAtIndex:0];
     
-    BOOL indataFile = [[NSFileManager defaultManager] fileExistsAtPath:[documentDirectory stringByAppendingPathComponent:@"indata.txt"]];
+    BOOL inputDataFile = [[NSFileManager defaultManager] fileExistsAtPath:[documentDirectory stringByAppendingPathComponent:@"inputData.txt"]];
         
-    return indataFile;
+    return inputDataFile;
 }
 
 - (void) animateDataCheck
@@ -175,7 +175,7 @@
     [tickGraphic setAlpha:0];
     [crossGraphic setAlpha:0];
     
-    if ([self isInDataAvailable]) {
+    if ([self isInputDataAvailable]) {
         tickGraphic.center = CGPointMake(tickGraphic.center.x - 200, tickGraphic.center.y);
         [UIView animateWithDuration:0.3f 
                               delay:0.4
@@ -183,7 +183,7 @@
                          animations:^{
                              tickGraphic.alpha = 1;
                              tickGraphic.center = CGPointMake(tickGraphic.center.x + 200, tickY);
-                             [tickLabel setText:@"indata.txt found"];
+                             [tickLabel setText:@"inputData.txt found"];
                              tickLabel.alpha = 1;
                          }
                          completion:^(BOOL finished) {
@@ -197,7 +197,7 @@
                          animations:^{
                              crossGraphic.alpha = 1;
                              crossGraphic.center = CGPointMake(crossGraphic.center.x + 200, crossY);
-                             [tickLabel setText:@"indata.txt not found"];
+                             [tickLabel setText:@"inputData.txt not found"];
                              tickLabel.alpha = 1;
                          }
                          completion:^(BOOL finished) {
@@ -210,8 +210,8 @@
 
 - (IBAction)enterScanMode:(id)sender 
 {
-    if ([self isInDataAvailable] == NO) {
-        [self showNoIndataMessage];
+    if ([self isInputDataAvailable] == NO) {
+        [self showNoInputDataMessage];
     } else {
         JYInventoryScanScannerViewController *scannerViewController = [[JYInventoryScanScannerViewController alloc]
                                                                     initWithNibName:@"JYInventoryScanScannerViewController" bundle:[NSBundle mainBundle]];
@@ -222,26 +222,24 @@
     }
 }
 
-- (IBAction)exportOutData:(id)sender 
+- (IBAction)exportOutputData:(id)sender 
 {
-    if ([[JYInventoryScanItemStore sharedStore].outData count] == 0) {
-        [self noOutdataFoundMessage];
+    if ([[JYInventoryScanItemStore sharedStore].outputData count] == 0) {
+        [self noOutputDataFoundMessage];
     } else {
-        // Set up CHSSV to write to outdata.txt
+        // Set up CHSSV to write to outputData.txt
         CHCSVWriter *writer = [[CHCSVWriter alloc] initForWritingToCSVFile:self.documentFilePath];
         
-        // For every item in the outdata array, write a line to the outdata.txt
-        for (JYInventoryScanItem *item in [JYInventoryScanItemStore sharedStore].outData) {
+        // For every item in the outputData array, write a line to the outputData.txt
+        for (JYInventoryScanItem *item in [JYInventoryScanItemStore sharedStore].outputData) {
             
             // Change the order here for other systems?
-            
-            [writer writeField:item.itemQuantityOnHand];
-            
-            
             // Check whether you have UPC or in-store SKU
             if ([item.itemUpc isEqual: @""]) {
                 [writer writeField:item.itemSku];
             } else [writer writeField:item.itemUpc];
+            
+            [writer writeField:item.itemQuantityOnHand];
             
             [writer finishLine];
         }
@@ -252,24 +250,24 @@
             
             [mailView setMailComposeDelegate:self];
             
-            [mailView setSubject:@"outData.txt File"];
+            [mailView setSubject:@"outputData.txt File"];
             
             // Create message body text with the total number of scanned items included
-            NSString *messageBodyText = [NSString stringWithFormat:@"outData.txt file attached with %d units.",[[JYInventoryScanItemStore sharedStore] numberOfUnits]];
+            NSString *messageBodyText = [NSString stringWithFormat:@"outputData.txt file attached with %d units.",[[JYInventoryScanItemStore sharedStore] numberOfUnits]];
             [mailView setMessageBody:messageBodyText isHTML:YES];
             
             [mailView setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
             
             NSData *attachment = [NSData dataWithContentsOfFile:[self documentFilePath]];
             
-            [mailView addAttachmentData:attachment mimeType:@"text/plain" fileName:@"outdata.txt"];
+            [mailView addAttachmentData:attachment mimeType:@"text/plain" fileName:@"outputData.txt"];
             
             [self presentViewController:mailView animated:YES completion:nil];
         } else NSLog(@"No email set up"); // Should swap to error message with user notification
     }
 }
 
-- (IBAction)deleteOutData:(id)sender // Used only to show error message to user, does no deleting
+- (IBAction)deleteOutputData:(id)sender // Used only to show error message to user, does no deleting
 {
     UIAlertView *deleteAlert = [[UIAlertView alloc] initWithTitle:@"Do you wish to delete all scanned inventory?" 
                                                           message:@"Only delete once you have emailed your scanned inventory and are ready to move onto your next area." 
@@ -283,13 +281,13 @@
 }
 
 
-- (NSString *) documentFilePath // returns full path to the outdata.txt
+- (NSString *) documentFilePath // returns full path to the outputData.txt
 {
     NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     
     NSString *documentDirectory = [documentDirectories objectAtIndex:0];
     
-    return [documentDirectory stringByAppendingPathComponent:@"outdata.txt"];
+    return [documentDirectory stringByAppendingPathComponent:@"outputData.txt"];
 }
 
 
@@ -303,14 +301,14 @@
     JYInventoryScanInfoPaneViewController *infoPane = [[JYInventoryScanInfoPaneViewController alloc]
                                                             initWithNibName:@"JYInventoryScanInfoPaneViewController" bundle:[NSBundle mainBundle]];
     
-    infoPane.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    infoPane.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     
-    [self presentViewController:infoPane animated:YES completion:nil];
+    [self.navigationController presentViewController:infoPane animated:YES completion:nil];
 }
 
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    // NB!! If other UIAlerts are shown to user with more than one button outdata will get deleted
+    // NB!! If other UIAlerts are shown to user with more than one button outputData will get deleted
     // if they tap the button where index == 1. Update for future.
     
     if (buttonIndex == 1) { 
@@ -322,57 +320,57 @@
         
         NSString *documentDirectory = [documentDirectories objectAtIndex:0];
         
-        // Remove outdata, the archive and the inbox folder containing mail.app files
-        [fm removeItemAtPath:[documentDirectory stringByAppendingPathComponent:@"outdata.txt"] error:nil];
+        // Remove outputData, the archive and the inbox folder containing mail.app files
+        [fm removeItemAtPath:[documentDirectory stringByAppendingPathComponent:@"outputData.txt"] error:nil];
         [fm removeItemAtPath:[documentDirectory stringByAppendingPathComponent:@"items.archive"] error:nil];
         [fm removeItemAtPath:[documentDirectory stringByAppendingPathComponent:@"Inbox"] error:nil];
         
-        // Clear the outdata
-        [JYInventoryScanItemStore sharedStore].outData = nil;
+        // Clear the outputData
+        [JYInventoryScanItemStore sharedStore].outputData = nil;
     }
 }
 
 - (void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 1) {
-        [JYInventoryScanItemStore sharedStore].outData = [[NSMutableArray alloc] init];
+        [JYInventoryScanItemStore sharedStore].outputData = [[NSMutableArray alloc] init];
     }
 }
 
-- (void) showNoIndataMessage // Shown when user hits scanner mode with no indata loaded
+- (void) showNoInputDataMessage // Shown when user hits scanner mode with no inputData loaded
 {
-    UIAlertView *noIndata = [[UIAlertView alloc] initWithTitle:@"No indata.txt loaded" 
-                                                          message:@"Email or file transfer the indata.txt file to this device to begin." 
+    UIAlertView *noInputData = [[UIAlertView alloc] initWithTitle:@"No inputData.txt loaded" 
+                                                          message:@"Email or file transfer the inputData.txt file to this device to begin." 
                                                          delegate:self 
                                                 cancelButtonTitle:@"OK" 
                                                 otherButtonTitles:nil, nil];
     
-    [noIndata setCancelButtonIndex:0];
+    [noInputData setCancelButtonIndex:0];
     
-    [noIndata show];
+    [noInputData show];
 }
 
-- (void) noOutdataFoundMessage // Shown when user goes to email file when outdata count == 0
+- (void) noOutputDataFoundMessage // Shown when user goes to email file when outputData count == 0
 {
-    UIAlertView *noOutdata = [[UIAlertView alloc] initWithTitle:@"No outdata.txt found" 
-                                                          message:@"Scan products to start building your outdata.txt file." 
+    UIAlertView *noOutputData = [[UIAlertView alloc] initWithTitle:@"No outputData.txt found" 
+                                                          message:@"Scan products to start building your outputData.txt file." 
                                                          delegate:self 
                                                 cancelButtonTitle:@"OK" 
                                                 otherButtonTitles:nil, nil];
     
-    [noOutdata setCancelButtonIndex:0];
+    [noOutputData setCancelButtonIndex:0];
     
-    [noOutdata show];
+    [noOutputData show];
 }
 
-- (void) tickTap:(UITapGestureRecognizer *)gr // Checks for new indata
+- (void) tickTap:(UITapGestureRecognizer *)gr // Checks for new inputData
 {
     [tickGraphic setAlpha:0];
     [crossGraphic setAlpha:0];
     [self animateDataCheck];
 }
 
-- (void) crossTap:(UITapGestureRecognizer *)gr // Checks for new indata
+- (void) crossTap:(UITapGestureRecognizer *)gr // Checks for new inputData
 {
     [tickGraphic setAlpha:0];
     [crossGraphic setAlpha:0];

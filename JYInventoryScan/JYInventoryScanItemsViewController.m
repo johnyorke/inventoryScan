@@ -34,7 +34,7 @@
     UINavigationItem *n = [self navigationItem];
     
     // Check if 1 item or more exists, if not change title to "No items"
-    if ([[JYInventoryScanItemStore sharedStore].outData count] > 0) {
+    if ([[JYInventoryScanItemStore sharedStore].outputData count] > 0) {
         [n setTitle:@"Scanned Items"];
     } else {
         [n setTitle:@"No items"];
@@ -65,7 +65,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [[JYInventoryScanItemStore sharedStore].outData count];
+    return [[JYInventoryScanItemStore sharedStore].outputData count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -81,10 +81,10 @@
     } 
     
     // -1 at the end to turn count into index no.
-    NSUInteger outdataCount = [[JYInventoryScanItemStore sharedStore].outData count] - 1;
+    NSUInteger outputDataCount = [[JYInventoryScanItemStore sharedStore].outputData count] - 1;
     
     // Takes the last item added to the array and displays it first
-    JYInventoryScanItem *tempItem = [[[JYInventoryScanItemStore sharedStore] outData] objectAtIndex:outdataCount - [indexPath row]];
+    JYInventoryScanItem *tempItem = [[[JYInventoryScanItemStore sharedStore] outputData] objectAtIndex:outputDataCount - [indexPath row]];
     
     cell.itemDescriptionLabel.text = [tempItem itemDescription];
     cell.itemQuantityOnHandLabel.text = [tempItem itemQuantityOnHand];

@@ -12,8 +12,8 @@
 
 @interface JYInventoryScanAppDelegate : UIResponder <UIApplicationDelegate>
 {
-    // URL to incoming indata file from email.app
-    NSString *indataNew;
+    // URL to incoming inputData file from email.app
+    NSString *inputDataNew;
 }
 
 @property (strong, nonatomic) UIWindow *window;

@@ -58,7 +58,7 @@
 
 - (NSString *) description
 {
-    // Used when compiling outdata.txt
+    // Used when compiling outputData.txt
     // Checks whether to use UPC or SKU
     if ([itemUpc isEqual: @""]) {
         return [NSString stringWithFormat:@"%@\",\"%@", itemSku, itemQuantityOnHand];

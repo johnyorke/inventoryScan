@@ -12,15 +12,15 @@
 
 @interface JYInventoryScanItemStore : NSObject
 {
-    NSMutableArray *inData;
-    NSMutableArray *outData;
+    NSMutableArray *inputData;
+    NSMutableArray *outputData;
     
-    NSString *inDataString;
+    NSString *inputDataString;
 }
 
-@property NSMutableArray *inData;
-@property NSMutableArray *outData;
-@property NSString *inDataString;
+@property NSMutableArray *inputData;
+@property NSMutableArray *outputData;
+@property NSString *inputDataString;
 
 + (JYInventoryScanItemStore *) sharedStore;
 
@@ -28,7 +28,7 @@
 
 - (NSString *) itemArchivePath;
 
-- (BOOL) saveOutData;
+- (BOOL) saveOutputData;
 
 - (NSUInteger) numberOfUnits;
 

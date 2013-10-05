@@ -52,7 +52,7 @@
     
     [enteredSkuField becomeFirstResponder];
     
-    [self loadInDataIntoString];
+    [self loadInputDataIntoString];
     
     // Calculate total number of items scanned so far
     [itemCountLabel setText:[NSString stringWithFormat:@"%d",[[JYInventoryScanItemStore sharedStore] numberOfUnits]]];
@@ -65,7 +65,7 @@
 
 - (void) viewDidAppear:(BOOL)animated
 {
-    [self loadInDataIntoString];
+    [self loadInputDataIntoString];
     [dtdev connect];
 }
 
@@ -74,7 +74,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
     
-    [[JYInventoryScanItemStore sharedStore] saveOutData];
+    [[JYInventoryScanItemStore sharedStore] saveOutputData];
 }
 
 - (void) setItemDescription: (NSString *) itemDescription 
@@ -97,8 +97,8 @@
     // This method is called when user returns off either qty or desc fields
     // It takes desc string and THEN uses following method to find match
     
-    // Seach in the indata for the enteredSkuField's text
-    [self searchInIndata:enteredSkuField.text];
+    // Seach in the inputData for the enteredSkuField's text
+    [self searchInInputData:enteredSkuField.text];
     
     // Go back to the SKU field
     [enteredSkuField becomeFirstResponder];
@@ -154,14 +154,14 @@
     }
 }
 
-- (void) searchInIndata: (NSString *) searchData
+- (void) searchInInputData: (NSString *) searchData
 {
     NSString *enteredSearch = searchData;
     
     // Check length of sku is above 10 characters to prevent accidental searches for "1", "123"
     if (enteredSearch.length > 10) {
-        // Find the location in indataString of matching SKU/UPC
-        NSRange range = [[JYInventoryScanItemStore sharedStore].inDataString rangeOfString:enteredSearch options:NSCaseInsensitiveSearch];
+        // Find the location in inputDataString of matching SKU/UPC
+        NSRange range = [[JYInventoryScanItemStore sharedStore].inputDataString rangeOfString:enteredSearch options:NSCaseInsensitiveSearch];
         
         // NSRange length returns 0 if it can't be found 
         if (range.length != 0) { 
@@ -174,9 +174,9 @@
             }
             
             // Return the complete line the range exists on
-            NSRange lineRange = [[JYInventoryScanItemStore sharedStore].inDataString lineRangeForRange:range];
+            NSRange lineRange = [[JYInventoryScanItemStore sharedStore].inputDataString lineRangeForRange:range];
             
-            NSString *line = [[JYInventoryScanItemStore sharedStore].inDataString substringWithRange:lineRange];
+            NSString *line = [[JYInventoryScanItemStore sharedStore].inputDataString substringWithRange:lineRange];
             
             // Parse it
             CHCSVParser *parser = [[CHCSVParser alloc] initWithCSVString:line];
@@ -204,14 +204,14 @@
             } else newItem.itemQuantityOnHand = enteredQtyField.text;
             
             
-            // Add it to the outData array
-            [[JYInventoryScanItemStore sharedStore].outData addObject:newItem];
+            // Add it to the outputData array
+            [[JYInventoryScanItemStore sharedStore].outputData addObject:newItem];
             
             // Update the total item count label
             [itemCountLabel setText:[NSString stringWithFormat:@"%d",[[JYInventoryScanItemStore sharedStore] numberOfUnits]]];
             
             // Save in case of crash
-            [[JYInventoryScanItemStore sharedStore] saveOutData];
+            [[JYInventoryScanItemStore sharedStore] saveOutputData];
             
             [self playGoodBeepAtVolume:1];
             
@@ -219,7 +219,7 @@
             [enteredSkuField setText:@""];
             [enteredQtyField setText:@""];
             
-        } else { // if range.length = 0 (aka no match found in indataString
+        } else { // if range.length = 0 (aka no match found in inputDataString
             [itemDescriptionLabel setAlpha:1];
             [itemPriceLabel setAlpha:1];
             [itemQuantityOnHandLabel setAlpha:1];
@@ -249,21 +249,21 @@
 }
     
 
-- (void) loadInDataIntoString
+- (void) loadInputDataIntoString
 {
-    // Create the url to the indata file
+    // Create the url to the inputData file
     NSError * error;
     NSString * stringFromFile;
     NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentDirectory = [documentDirectories objectAtIndex:0];
-    NSString * stringFilepath = [documentDirectory stringByAppendingPathComponent:@"indata.txt"];
+    NSString * stringFilepath = [documentDirectory stringByAppendingPathComponent:@"inputData.txt"];
     
     // Create a string from the contents
     stringFromFile = [[NSString alloc] initWithContentsOfFile:stringFilepath
                                                      encoding:NSUTF8StringEncoding
                                                         error:&error];
     
-    [JYInventoryScanItemStore sharedStore].inDataString = stringFromFile;
+    [JYInventoryScanItemStore sharedStore].inputDataString = stringFromFile;
 }
 
 - (void) barcodeData:(NSString *)barcode type:(int)type
@@ -323,8 +323,8 @@
     // Disconnect to save battery and prevent accidental scans
     [dtdev disconnect];
     
-    // Save outdata
-    [[JYInventoryScanItemStore sharedStore] saveOutData];
+    // Save outputData
+    [[JYInventoryScanItemStore sharedStore] saveOutputData];
 }
 
 
