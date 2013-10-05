@@ -555,6 +555,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JYInventoryScan/JYInventoryScan-Prefix.pch";
 				INFOPLIST_FILE = "JYInventoryScan/JYInventoryScan-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = /Users/yorkej/Documents/Git/inventoryScan/JYInventoryScan;
 				PRODUCT_NAME = Scanner;
 				PROVISIONING_PROFILE = "";
@@ -572,6 +573,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JYInventoryScan/JYInventoryScan-Prefix.pch";
 				INFOPLIST_FILE = "JYInventoryScan/JYInventoryScan-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = /Users/yorkej/Documents/Git/inventoryScan/JYInventoryScan;
 				PRODUCT_NAME = Scanner;
 				PROVISIONING_PROFILE = "";

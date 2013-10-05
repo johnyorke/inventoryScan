@@ -32,13 +32,13 @@
     // Place navigation controller's view in the window hierarchy
     [[self window] setRootViewController:navController];
     
-    navController.navigationBar.tintColor = [UIColor blackColor];
+    navController.navigationBar.tintColor = [UIColor colorWithRed:0.0 green:0.47 blue:1 alpha:1.0];
         
     // Load incoming inputData url from mail.app into a string
     inputDataNew = [launchOptions valueForKey:UIApplicationLaunchOptionsURLKey];
     
     [navController.navigationBar setTranslucent:NO];
-    [navController.navigationBar setTintColor:[UIColor blueColor]];
+    [navController.navigationBar setTintColor:[UIColor colorWithRed:0.0 green:0.47 blue:1 alpha:1.0]];
 
     self.window.backgroundColor = [UIColor blackColor];
     [self.window makeKeyAndVisible];            

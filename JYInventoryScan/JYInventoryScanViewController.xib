@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <objects>
@@ -34,8 +35,9 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="46">
                     <rect key="frame" x="20" y="153" width="280" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                     <state key="normal" title="Enter Scan Mode">
+                        <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -45,12 +47,12 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="51">
                     <rect key="frame" x="20" y="205" width="280" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                     <state key="normal" title="Email Scanned Inventory">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="exportOutData:" destination="-1" eventType="touchUpInside" id="125"/>
+                        <action selector="exportOutputData:" destination="-1" eventType="touchUpInside" id="i4K-mM-AS9"/>
                     </connections>
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="83">
@@ -78,13 +80,13 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="128">
                     <rect key="frame" x="20" y="257" width="280" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                     <state key="normal" title="Delete Scanned Inventory">
                         <color key="titleColor" red="0.52759850539999997" green="0.056548087099999998" blue="0.02493934393" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="deleteOutData:" destination="-1" eventType="touchUpInside" id="130"/>
+                        <action selector="deleteOutputData:" destination="-1" eventType="touchUpInside" id="d8m-Mf-xVC"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="131">
